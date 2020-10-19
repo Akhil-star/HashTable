@@ -1,6 +1,6 @@
 package com.cg.hashtable;
 
-public class MyMapNode<K, V>  {
+public class MyMapNode<K, V> implements INode<K>{
     K key;
     V value;
     MyMapNode next;
@@ -19,6 +19,14 @@ public class MyMapNode<K, V>  {
         this.key = key;
     }
 
+    public INode<K> getNext() {
+        return next;
+    }
+
+    public void setNext(INode<K> next) {
+        this.next = (MyMapNode<K,V>) next;
+    }
+
     public V getValue() {
         return value;
     }
@@ -27,20 +35,12 @@ public class MyMapNode<K, V>  {
         this.value = value;
     }
 
-    public MyMapNode<K,V> getNext() {
-        return next;
-    }
-
-    public void setNext(MyMapNode<K,V> next) {
-        this.next = next;
-    }
-
     public String toString(){
-        StringBuilder strBuild = new StringBuilder();
-        strBuild.append("{ K= ").append(key).append(", V= ").append(value).append(" }");
+        StringBuilder myMapNodeString = new StringBuilder();
+        myMapNodeString.append("MyMapNode{" + "K = ").append(key).append(" V = ").append(value).append(" }");
         if(next!=null)
-            strBuild.append("->");
-        return strBuild.toString();
+            myMapNodeString.append("->").append( next );
+        return myMapNodeString.toString();
     }
 }
 

@@ -1,37 +1,51 @@
 package com.cg.hashtable;
 
 public class LinkedList<K,V> {
-        private MyMapNode head = null;
-        private MyMapNode tail = null;
+        private INode<K> head ;
+        private INode<K> tail ;
 
-        public void append(MyMapNode end) {
+        public LinkedList(){
+            this.head = null;
+            this.tail = null;
+        }
 
-            MyMapNode node = head;
-            tail = end;
-            if (head == null) {
-                head = end;
-            } else {
-                while (node.getNext() != null) {
-                    node = node.getNext();
-
-                }
-                node.setNext(end);
+        public void add(INode<K> newNode){
+            if(this.tail == null){
+                this.tail = newNode;
+            }
+            if(this.head == null){
+                this.head =  newNode;
+            }else{
+                INode<K> tempNode = this.head;
+                this.head = newNode;
+                this.head.setNext( newNode );
             }
         }
 
-        public MyMapNode<K,V> search(K key) {
-            MyMapNode temp = head;
-            while (temp != null) {
-                if (temp.getKey().equals(key)) {
-                    return temp;
+        public void append(INode<K> myNode) {
+            if (this.head == null) {
+                this.head = myNode;
+            } if(this.tail == null){
+                this.tail = myNode;
+            }else{
+                this.tail.setNext(myNode);
+                this.tail = myNode;
+            }
+        }
+
+        public INode<K> search(K key) {
+            INode<K> tempNode = head;
+            while (tempNode != null && tempNode.getNext() != null) {
+                if (tempNode.getKey().equals(key)) {
+                    return tempNode;
                 }
-                temp = temp.getNext();
+                tempNode = tempNode.getNext();
             }
             return null;
         }
 
         public void printLinkedList() {
-            MyMapNode node = head;
+            INode node = head;
             while (node != null) {
                 System.out.print(node);
                 if (node != tail) {
@@ -40,5 +54,14 @@ public class LinkedList<K,V> {
                 node = node.getNext();
             }
         }
+
+        public void printMyNodes(){
+            System.out.println("My Nodes: " +head);
+        }
+
+       @Override
+       public String toString() {
+          return "LinkedListNodes{" + head + '}';
     }
+}
 

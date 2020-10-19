@@ -4,19 +4,19 @@ public class MyHashMap<K, V> {
     LinkedList<K,V> list;
 
     public MyHashMap(){
-        this.list = new  LinkedList<>();
+        list = new  LinkedList<>();
     }
 
     public V get(K key) {
-        MyMapNode<K,V> mapNode = (MyMapNode<K, V>) list.search(key);
+        MyMapNode<K,V> mapNode = (MyMapNode<K, V>) this.list.search(key);
         return (mapNode == null) ? null : mapNode.getValue();
     }
 
     public void add(K key, V value) {
-        MyMapNode<K,V> mapNode = (MyMapNode<K, V>) list.search(key);
+        MyMapNode<K,V> mapNode = (MyMapNode<K, V>) this.list.search(key);
         if(mapNode==null){
             mapNode = new MyMapNode<>(key,value);
-            list.append(mapNode);
+            this.list.append(mapNode);
         }
         else
             mapNode.setValue(value);
@@ -24,6 +24,6 @@ public class MyHashMap<K, V> {
 
     @Override
     public String toString() {
-        return "HashNodes {"+ list + "}";
+        return "MyHashMapNodes {"+ list + "}";
     }
 }
