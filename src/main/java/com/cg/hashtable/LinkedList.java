@@ -1,6 +1,6 @@
 package com.cg.hashtable;
 
-public class LinkedList<K,V> {
+public class LinkedList<K> {
         private INode<K> head ;
         private INode<K> tail ;
 

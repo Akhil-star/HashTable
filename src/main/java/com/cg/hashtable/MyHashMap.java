@@ -1,7 +1,7 @@
 package com.cg.hashtable;
 
 public class MyHashMap<K, V> {
-    LinkedList<K,V> list;
+    LinkedList<K> list;
 
     public MyHashMap(){
         list = new  LinkedList<>();
