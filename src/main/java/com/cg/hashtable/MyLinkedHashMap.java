@@ -9,7 +9,6 @@ public class MyLinkedHashMap<K, V> {
     public MyLinkedHashMap(){
         this.numBuckets = 10;
         this.myBucketArray = new ArrayList<>(numBuckets);
-
         for(int i = 0; i< numBuckets; i++){
             this.myBucketArray.add(null);
         }

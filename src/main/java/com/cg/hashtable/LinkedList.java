@@ -56,26 +56,16 @@ public class LinkedList<K> {
         }
 
 
-       public void delete(K key){
+        public boolean delete(K key) {
+            if(search(key) == null)
+                return false;
             INode tempNode = head;
-            while (tempNode!=null){
-               if(head.getKey().equals(key)){
-                 if(head.getNext()==null){
-                    head=null;
-                    tail=null;
-                    break;
-                 }
-                 else{
-                    head=head.getNext();
-                    break;
-                 }
+            while (tempNode.getNext().getKey() != key) {
+                tempNode = tempNode.getNext();
             }
-            if(tempNode.getNext().getKey().equals(key))
-                tempNode.setNext(tempNode.getNext().getNext());
-            tail=tempNode;
-            tempNode=tempNode.getNext();
-          }
-       }
+            tempNode.setNext(tempNode.getNext().getNext());;
+            return true;
+        }
 
        public void printMyNodes(){
           System.out.println("My Nodes: " +head);
